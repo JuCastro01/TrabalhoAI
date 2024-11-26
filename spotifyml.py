@@ -63,7 +63,7 @@ class SpotifyMLPipeline:
             print("Cache não encontrado ou expirado. Coletando dados da API...")
         
         tracks_data = []
-        tracks_processed = set()  # Para evitar duplicatas
+        tracks_processed = set()  
         
         try:
             while len(tracks_data) < self.min_tracks:
@@ -75,7 +75,7 @@ class SpotifyMLPipeline:
                         tracks = results['items']
                         
                         while results['next']:
-                            time.sleep(1)  # Rate limiting
+                            time.sleep(1)  
                             results = self.sp.next(results)
                             tracks.extend(results['items'])
                         
@@ -91,7 +91,7 @@ class SpotifyMLPipeline:
                             
                             if len(track_ids) == 50:
                                 try:
-                                    time.sleep(1)  # Rate limiting
+                                    time.sleep(1)  
                                     audio_features_batch = self.sp.audio_features(track_ids)
                                     
                                     for i, features in enumerate(audio_features_batch):
@@ -124,12 +124,12 @@ class SpotifyMLPipeline:
                                     
                                 except Exception as e:
                                     print(f"Erro no lote: {str(e)}")
-                                    if "429" in str(e):  # Rate limit error
+                                    if "429" in str(e):  
                                         time.sleep(30)
                                     track_ids = []
                                     continue
                         
-                        # Processa o último lote de tracks
+                     
                         if track_ids:
                             try:
                                 time.sleep(1)
@@ -167,8 +167,7 @@ class SpotifyMLPipeline:
                 
                 if len(tracks_data) < self.min_tracks:
                     print(f"Ainda precisamos de {self.min_tracks - len(tracks_data)} músicas. Reiniciando o processo com as mesmas playlists...")
-                    # Reseta as playlists e continua coletando
-                    tracks_processed.clear()  # Permite coletar as mesmas músicas novamente se necessário
+                    tracks_processed.clear() 
             
         except Exception as e:
             print(f"Erro ao coletar dados: {str(e)}")
@@ -300,10 +299,8 @@ class SpotifyMLPipeline:
         
         y_pred = self.model.predict(X_test)
         
-        # Gera figura com resultados do modelo
         fig = plt.figure(figsize=(20, 8))
         
-        # Importância das Features
         features = ['Dançabilidade', 'Energia', 'Tom', 'Volume', 
                    'Modo', 'Vocais', 'Instrumental', 
                    'Ao Vivo', 'Positividade', 'Tempo']
