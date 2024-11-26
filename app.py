@@ -11,7 +11,6 @@ app = Flask(__name__)
 CLIENT_ID = "ddcd98f76a6a438799e331587a467a27"
 CLIENT_SECRET = "c427a53bb4ee42cca45b1fd5ef263cb0"
 
-# Inicialização global do pipeline
 pipeline = None
 
 @app.route('/')
@@ -25,22 +24,18 @@ def run_analysis():
     global pipeline
     
     try:
-        # Inicializa o pipeline
         pipeline = SpotifyMLPipeline(CLIENT_ID, CLIENT_SECRET)
         
-        # Playlists para análise
         playlist_ids = [
-            "37i9dQZF1DXcBWIGoYBM5M",  # Today's Top Hits
-            "37i9dQZF1DX0XUsuxWHRQd",  # RapCaviar
-            "37i9dQZF1DX4JAvHpjipBk", # New Music Friday
+            "37i9dQZF1DXcBWIGoYBM5M",  
+            "37i9dQZF1DX0XUsuxWHRQd",  
+            "37i9dQZF1DX4JAvHpjipBk", 
             "37i9dQZF1DX0Yxoavh5qJV",
             "4rnleEAOdmFAbRcNCgZMpY"
         ]
         
-        # Coleta dados
         pipeline.collect_data(playlist_ids)
         
-        # Dicionário para armazenar as imagens dos gráficos
         figures = {}
         
         # 1. Análise de Distribuição
@@ -57,10 +52,8 @@ def run_analysis():
         FigureCanvas(fig).print_png(buf)
         figures['model'] = base64.b64encode(buf.getvalue()).decode('utf-8')
         
-        # Gera insights
         insights = pipeline.generate_insights()
         
-        # Formata os insights para melhor apresentação
         formatted_insights = {
             'tempo': f"{float(insights['tempo']):.0f}",
             'energia_popularidade': f"{float(insights['energia_popularidade']):.2f}",
