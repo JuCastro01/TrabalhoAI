@@ -1,5 +1,8 @@
 # TrabalhoAI
 
+## Video:
+
+https://youtu.be/wPp48lPQejY
 
 ## Descrição:
 
