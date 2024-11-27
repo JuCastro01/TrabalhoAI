@@ -3,29 +3,51 @@
 
 ## Descrição:
 
-O projeto é um app que analisa os dados das musicas do spotify e faz uma analise aplicando os conceitos aprendidos de machine learning.
+Esse projeto é uma aplicação web que utiliza machine learning para analisar e classificar músicas com base em suas características musicais e popularidade. Desenvolvido com Python, Flask e a API do Spotify, o sistema coleta dados de músicas através da biblioteca Spotipy, processa essas informações usando Pandas e Scikit-learn para análise estatística e classificação, e apresenta os resultados através de visualizações interativas criadas com Matplotlib e Seaborn. A interface web, construída com HTML, CSS e JavaScript, oferece uma experiência intuitiva para explorar padrões musicais e entender os fatores que influenciam a popularidade das músicas no Spotify.
 
 ## 🔧 Execução:
 
 Instalação:
 
-
+```
 pip install flask matplotlib seaborn spotipy pandas scikit-learn
-
+```
 
 Execução:
 Baixe os arquivos e dentro do diretorio com os itens utilize o seguinte comando.
 
-
+```
 python app.py
-
+```
 
 
 ## 🛠️ Construído com:
 
-<div align="center">
-<a href=" " target="_blank"><img src="https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white" target="_blank"></a>
-  <a href=" " target="_blank"><img src="https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white" target="_blank"></a>
+Backend:
+
+
+Python como linguagem principal
+Flask para o servidor web
+Spotipy para integração com a API do Spotify
+Pandas para manipulação de dados
+Scikit-learn para machine learning
+Matplotlib e Seaborn para visualizações
+JSON para cache de dados
+
+
+Frontend:
+
+
+HTML5 e CSS3 para estrutura e estilo
+JavaScript e jQuery para interatividade
+Design responsivo inspirado na interface do Spotify
+
+
+Machine Learning:
+
+
+Random Forest Classifier para classificação
+StandardScaler para normalização de dados
   
 </div>
 
